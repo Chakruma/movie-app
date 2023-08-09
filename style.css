@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Dosis&family=Lato&family=Zilla+Slab:wght@300&display=swap');
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #bababa;
+    color: #262626;
+    /* overflow-x: hidden; */
+    position: relative;
+}
+
+img{
+    width: 200px;
+}
+
+.navbar_container{
+    height: 40px;
+    width: 100%;
+    background: #262626;
+    color: #bababa;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.navbar{
+    margin: auto;
+    height: inherit;
+    max-width: 2000px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar h3{
+    margin-left: 2rem;
+    cursor: pointer; 
+    transition: all 0.3s ease;       
+}
+
+.navbar h3:hover{
+    color: #ffffff;
+}
+
+.search{
+    position: relative;
+    margin-right: 2rem;
+    display: flex;
+}
+
+.search .input{
+    background-color: #bababa;
+    border: 0;
+    padding: 0.3rem;
+    width: 12px;
+    transition: width 1s ease;
+}
+
+.search_button{
+    background-color: #262626;
+    color: #bababa;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    padding: 0.3rem;
+    top: 0;
+    right: 0;
+    transition: all 1s ease;
+}
+
+.search_button:focus,
+.input:focus{
+    outline: none;
+}
+
+.search.active .input{
+    width: 200px;
+}
+
+.search.active .search_button{
+    /* transform: translateX(180px); */
+    background: #bababa;
+    color: #262626;
+}
+
+.results_display{
+    width: 75vw;
+    max-height: 100px;
+    max-width: 500px;
+    font-size: 0.7rem;
+    background: #262626;
+    color: #ffffff;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    max-width: 2000px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.movie-wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;    
+    width: 200px;
+    padding: 0rem;
+    margin: 0.6rem;
+    border-radius: 10px;
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+}
+
+.movie-wrap >*{
+    margin: 2.5rem 0;
+}
+
+.movie-wrap:hover div{
+    transform: translateY(50%);
+    background: #000000;
+}
+
+.movie-wrap:hover h4{
+    transform: translateY(-25%);
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+
+.movie-wrap:hover .movie_descript,
+.movie-wrap:hover .rating{
+    transform: translateY(10%);
+}
+
+.movie-wrap > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    background: #262626;
+    color: #c5c5c5;
+    height: 80px;
+    width: 100%;
+    bottom: 0;
+    padding: 0 0.5rem;
+    transition: all 0.3s ease-in;
+    transform: translateY(90%);
+}
+
+.movie-wrap .movie_descript{
+    margin: 0 0 6px 0;
+    font-size: 12px;
+    transition: all 0.3s ease-in;
+    transform: translateY(70%);
+}
+
+.movie-wrap h4{
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Arimo', sans-serif;
+    transition: all 0.3s ease-in;
+    margin-bottom: 12px;
+}
+
+.movie-wrap p {
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+}
+
+.details{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    /* padding: 10px; */
+    z-index: 2;
+}
+
+.show{
+    display: flex;
+}
+
+.details .details_content,
+.details img{
+    width: 50%;
+    padding: 10px;
+    object-fit: cover;
+    max-width: 400px;
+    max-height: 600px;
+}
+
+.details .details_content h1{
+    font-size: 1.5rem;
+    margin: 2rem 0;
+}
+
+.details .details_content p{
+    font-size: 0.8rem;
+    text-align: justify;
+    margin: 0 0rem 1rem 0;
+}
+
+.details .details_content li {
+    list-style: none;
+    font-size: 0.8rem;
+  }
+
+.details .details_content p:nth-child(2){margin: 0 2.5rem 3rem 0;}
+.details .details_content p:nth-child(5){margin: 0 2.5rem 3rem 0;}  
+
+.details .backdrop{
+    background: rgba(35, 35, 35, 0.9);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+}
+
+.details .backdrop_image{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: none;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.details .movie_image{
+    display: block;
+}
+
+@media(max-width: 600px){
+
+    .details{
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .details .details_content h1{
+        font-size: 1.2rem;
+        margin: 1rem 0;
+    }
+    
+    .details .details_content p{
+        margin: 0 0rem 1rem 0;
+        font-size: 0.8rem;
+    }
+
+    .details .details_content li {
+        font-size: 0.8rem;
+    }
+
+    .details .details_content p:nth-child(2){margin: 0 2.5rem 3rem 0;}
+    .details .details_content p:nth-child(5){margin: 0 2.5rem 3rem 0;}  
+
+    .details .backdrop{
+        background: rgba(0, 0, 0, 0.9);
+    }
+
+    .details .movie_image{
+        display: none;
+    }
+
+    .details .backdrop_image{
+        display: block;
+        z-index: -1;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    .details .details_content,
+    .details img{
+        width: 100vh;
+        width: 100vh;
+        padding: 10px;
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        margin: 0 20px;
+    }    
+
+    .navbar h3{
+        font-size: 16px;
+    }
+
+    .search.active .input{
+        width: 150px;
+    }
+
+}
+
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.pagination button{
+    margin: 0 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: #fffafa;
+    font-size: 1.0rem;
+    border-radius: 10%;
+    cursor: pointer;
+    border: 0;
+}
+
+
